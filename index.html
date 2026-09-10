@@ -19,47 +19,15 @@
     html { scroll-behavior: smooth; }
     body { background-color: var(--white); color: var(--slate); line-height: 1.4; font-size: 0.9rem; }
 
-    /* Ultra-Compact Sticky Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--navy);
-      z-index: 1000;
-      border-bottom: 2px solid var(--gold);
-      padding: 0.25rem 1rem;
-    }
-    .nav-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 0.25rem; list-style: none; }
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 0.25rem 0.5rem;
-      border-radius: 3px;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-
-    /* Compact Hero Header */
+    /* Compact Hero Header (Now on top) */
     .hero {
       background: var(--navy);
       color: var(--white);
       text-align: center;
-      padding: 1.5rem 1rem 1.25rem;
-      border-bottom: 3px solid var(--gold);
+      padding: 1.75rem 1rem 1.25rem;
     }
     .hero h1 {
-      font-size: 1.75rem;
+      font-size: 2rem;
       font-style: italic;
       color: var(--gold);
       text-transform: uppercase;
@@ -74,9 +42,41 @@
       letter-spacing: 0.05em;
     }
 
+    /* Ultra-Compact Sticky Navigation (Now below title) */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--navy);
+      z-index: 1000;
+      border-top: 1px solid #1e3a7a;
+      border-bottom: 3px solid var(--gold);
+      padding: 0.35rem 1rem;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 0.25rem; list-style: none; justify-content: center; }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.3rem 0.5rem;
+      border-radius: 3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
     /* Main Container & Sections */
     .container { max-width: 850px; margin: 0 auto; padding: 1.5rem 1rem; }
-    section { margin-bottom: 1.75rem; scroll-margin-top: 3rem; }
+    section { margin-bottom: 1.75rem; scroll-margin-top: 3.5rem; }
     
     h2.section-title {
       font-size: 1.15rem;
@@ -88,11 +88,19 @@
       margin-bottom: 0.75rem;
     }
 
-    /* Ghost-in Animation for Memorial */
+    /* Ghost-in Animation for Memorial & Team */
     @keyframes ghostFadeIn {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(15px); filter: blur(3px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
+    .fade-in {
+      opacity: 0; /* Starts hidden */
+      animation: ghostFadeIn 1.5s ease-out forwards;
+    }
+    .delay-team {
+      animation-delay: 0.3s; /* Makes your profile fade in slightly after */
+    }
+
     .memorial-box {
       background: var(--light-bg);
       border: 1px solid var(--border);
@@ -103,8 +111,6 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 1.25rem;
-      opacity: 0; /* Starts hidden */
-      animation: ghostFadeIn 1.5s ease-out forwards;
     }
     .memorial-img {
       width: 120px;
@@ -118,7 +124,7 @@
     .memorial-text h3 { color: var(--navy); font-size: 1.1rem; font-style: italic; margin-bottom: 0.25rem; }
     .memorial-text p { font-size: 0.85rem; font-style: italic; color: var(--slate); line-height: 1.5; }
 
-    /* Compact Cards (Agenda, Profile, etc.) */
+    /* Compact Cards */
     .card {
       background: var(--light-bg);
       border: 1px solid var(--border);
@@ -133,7 +139,15 @@
 
     /* Roster Profile */
     .profile-flex { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
-    .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid var(--navy); }
+    .profile-img { 
+      width: 100px; 
+      height: 100px; 
+      border-radius: 50%; 
+      object-fit: cover; 
+      /* Shifts the image down to hide the "Rigo C." UI bar and center on you */
+      object-position: center 25%; 
+      border: 2px solid var(--navy); 
+    }
     .profile-info { flex: 1; min-width: 200px; }
     .profile-info h3 { color: var(--navy); font-size: 1.1rem; font-style: italic; }
     .profile-info .role { color: var(--gold); background: var(--navy); display: inline-block; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin: 0.2rem 0 0.5rem; }
@@ -144,36 +158,37 @@
     .schedule-grid .tag { display: inline-block; background: var(--navy); color: var(--gold); font-size: 0.7rem; font-weight: bold; padding: 0.15rem 0.4rem; border-radius: 3px; margin-bottom: 0.25rem; }
     .schedule-grid h4 { color: var(--navy); font-size: 0.95rem; font-style: italic; }
 
-    footer { text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.75rem; }
+    footer { text-align: center; padding: 1.5rem 1rem; color: #94a3b8; font-size: 0.75rem; }
   </style>
 </head>
 <body>
 
-  <!-- Tiny Sticky Nav -->
-  <nav>
-    <div class="nav-inner">
-      <ul class="nav-links">
-        <li><a href="#memorial">In Memoriam</a></li>
-        <li><a href="#agenda">Agenda</a></li>
-        <li><a href="#mission">Mission</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#schedule">Schedule</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Compact Hero -->
+  <!-- Compact Hero (Title is now above subsections) -->
   <header class="hero">
     <h1>Sammys Club</h1>
     <p>The Greatest San Fernando Valley Running Team of All Time</p>
   </header>
 
+  <!-- Tiny Sticky Nav (Now below the title) -->
+  <nav>
+    <div class="nav-inner">
+      <ul class="nav-links">
+        <li><a href="#memorial">In Memorial</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <main class="container">
 
     <!-- 1. Memorial (Ghosts into view) -->
     <section id="memorial">
-      <h2 class="section-title">In Memoriam</h2>
-      <div class="memorial-box">
+      <h2 class="section-title">In Memorial</h2>
+      <div class="memorial-box fade-in">
         <img src="coach_ismael.jpeg" alt="Coach Ismael" class="memorial-img" />
         <div class="memorial-text">
           <h3>Coach Ismael</h3>
@@ -202,14 +217,14 @@
       </div>
     </section>
 
-    <!-- 4. Meet the Team -->
+    <!-- 4. Meet the Team (Ghosts into view slightly after memorial) -->
     <section id="team">
       <h2 class="section-title">Meet the Team</h2>
-      <div class="card profile-flex">
+      <div class="card profile-flex fade-in delay-team">
         <img src="rigo_profile.jpeg" alt="Rigoberto" class="profile-img" />
         <div class="profile-info">
           <h3>Rigoberto Castellanos</h3>
-          <div class="role">Founder & Team Captain</div>
+          <div class="role">Co-Founder</div>
           <p>Bringing eight years of competitive distance running experience, from leading as high school track and cross country captain to competing collegiately. Founded to honor Coach Ismael's legacy and build a relentless racing culture.</p>
         </div>
       </div>
@@ -220,20 +235,29 @@
       <h2 class="section-title">Weekly Schedule</h2>
       <div class="schedule-grid">
         <div class="card">
-          <span class="tag">Tue @ 6:00 PM</span>
-          <h4>Track Intervals</h4>
-          <p style="font-size:0.8rem; margin-top:0.25rem;">Speed sessions & 400m-1600m repeats.</p>
+          <span class="tag">Tue @ 2:00 PM</span>
+          <h4>Light Jog Run</h4>
+          <p style="font-size:0.8rem; margin-top:0.25rem;">Easy aerobic maintenance and recovery pacing.</p>
         </div>
         <div class="card">
-          <span class="tag">Thu @ 6:30 PM</span>
-          <h4>Tempo Run</h4>
-          <p style="font-size:0.8rem; margin-top:0.25rem;">5 to 7-mile sustained tempo efforts.</p>
+          <span class="tag">Thu @ 2:00 PM</span>
+          <h4>Workout of Choice</h4>
+          <p style="font-size:0.8rem; margin-top:0.25rem;">Workout of our choice on hills for targeted elevation work.</p>
         </div>
         <div class="card">
-          <span class="tag">Sat @ 7:00 AM</span>
+          <span class="tag">Sat @ 6:40 AM</span>
           <h4>Long Run</h4>
-          <p style="font-size:0.8rem; margin-top:0.25rem;">10-16 miles of aerobic base building.</p>
+          <p style="font-size:0.8rem; margin-top:0.25rem;">Long run in a mountain running trail.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- 6. Contact Us -->
+    <section id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="card" style="text-align: center;">
+        <p style="font-size:0.85rem; margin-bottom: 0.75rem;">Have questions about joining, workouts, or team gear?</p>
+        <button style="background:var(--navy); color:var(--gold); border:none; padding:0.5rem 1rem; border-radius:4px; font-weight:bold; cursor:pointer;" onclick="alert('Contact form coming soon!')">Contact Support Staff</button>
       </div>
     </section>
 
