@@ -11,7 +11,8 @@
       --gold: #f5b041;
       --white: #ffffff;
       --light-bg: #f8fafc;
-      --slate: #334155;
+      --slate: #334155;     /* Main text color */
+      --muted: #64748b;     /* Slightly lighter color for subheadings */
       --border: #e2e8f0;
     }
 
@@ -19,12 +20,16 @@
     html { scroll-behavior: smooth; }
     body { background-color: var(--white); color: var(--slate); line-height: 1.4; font-size: 0.9rem; }
 
-    /* Compact Hero Header (Now on top) */
+    /* Compact Hero Header (Left Aligned) */
     .hero {
       background: var(--navy);
       color: var(--white);
-      text-align: center;
       padding: 1.75rem 1rem 1.25rem;
+    }
+    .hero-inner {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: left;
     }
     .hero h1 {
       font-size: 2rem;
@@ -42,7 +47,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* Ultra-Compact Sticky Navigation (Now below title) */
+    /* Ultra-Compact Sticky Navigation (Left Aligned) */
     nav {
       position: sticky;
       top: 0;
@@ -53,15 +58,15 @@
       padding: 0.35rem 1rem;
     }
     .nav-inner {
-      max-width: 900px;
+      max-width: 850px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start; /* Aligns links to the left */
       gap: 0.5rem;
     }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 0.25rem; list-style: none; justify-content: center; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 0.25rem; list-style: none; justify-content: flex-start; margin-left: -0.5rem; }
     .nav-links a {
       color: var(--white);
       text-decoration: none;
@@ -88,17 +93,10 @@
       margin-bottom: 0.75rem;
     }
 
-    /* Ghost-in Animation for Memorial & Team */
+    /* Ghost-in Animation ONLY for the photos */
     @keyframes ghostFadeIn {
       0% { opacity: 0; transform: translateY(15px); filter: blur(3px); }
       100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-    }
-    .fade-in {
-      opacity: 0; /* Starts hidden */
-      animation: ghostFadeIn 1.5s ease-out forwards;
-    }
-    .delay-team {
-      animation-delay: 0.3s; /* Makes your profile fade in slightly after */
     }
 
     .memorial-box {
@@ -119,10 +117,26 @@
       object-position: top;
       border-radius: 4px;
       border: 2px solid var(--gold);
+      opacity: 0; /* Starts hidden for animation */
+      animation: ghostFadeIn 1.5s ease-out forwards;
     }
-    .memorial-text { flex: 1; min-width: 250px; }
-    .memorial-text h3 { color: var(--navy); font-size: 1.1rem; font-style: italic; margin-bottom: 0.25rem; }
-    .memorial-text p { font-size: 0.85rem; font-style: italic; color: var(--slate); line-height: 1.5; }
+    
+    /* Text Descriptions & Subheadings */
+    .text-desc-wrapper { flex: 1; min-width: 250px; }
+    .text-desc-wrapper h3 { color: var(--navy); font-size: 1.1rem; font-style: italic; margin-bottom: 0.1rem; }
+    
+    /* Subheading with a slightly different (lighter) color */
+    .desc-subheading {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .text-desc-wrapper p { font-size: 0.85rem; color: var(--slate); line-height: 1.5; }
+    .italic-text { font-style: italic; }
 
     /* Compact Cards */
     .card {
@@ -144,13 +158,12 @@
       height: 100px; 
       border-radius: 50%; 
       object-fit: cover; 
-      /* Shifts the image down to hide the "Rigo C." UI bar and center on you */
       object-position: center 25%; 
-      border: 2px solid var(--navy); 
+      border: 2px solid var(--navy);
+      opacity: 0; /* Starts hidden for animation */
+      animation: ghostFadeIn 1.5s ease-out forwards;
+      animation-delay: 0.3s; /* Delays your photo phasing in slightly after Coach's */
     }
-    .profile-info { flex: 1; min-width: 200px; }
-    .profile-info h3 { color: var(--navy); font-size: 1.1rem; font-style: italic; }
-    .profile-info .role { color: var(--gold); background: var(--navy); display: inline-block; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin: 0.2rem 0 0.5rem; }
 
     /* Schedule Grid */
     .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
@@ -163,13 +176,15 @@
 </head>
 <body>
 
-  <!-- Compact Hero (Title is now above subsections) -->
+  <!-- Compact Hero (Left Aligned) -->
   <header class="hero">
-    <h1>Sammys Club</h1>
-    <p>The Greatest San Fernando Valley Running Team of All Time</p>
+    <div class="hero-inner">
+      <h1>Sammys Club</h1>
+      <p>The Greatest San Fernando Valley Running Team of All Time</p>
+    </div>
   </header>
 
-  <!-- Tiny Sticky Nav (Now below the title) -->
+  <!-- Tiny Sticky Nav (Left Aligned) -->
   <nav>
     <div class="nav-inner">
       <ul class="nav-links">
@@ -185,14 +200,18 @@
 
   <main class="container">
 
-    <!-- 1. Memorial (Ghosts into view) -->
+    <!-- 1. Memorial -->
     <section id="memorial">
       <h2 class="section-title">In Memorial</h2>
-      <div class="memorial-box fade-in">
+      <div class="memorial-box">
+        <!-- Image phases in -->
         <img src="coach_ismael.jpeg" alt="Coach Ismael" class="memorial-img" />
-        <div class="memorial-text">
+        <div class="text-desc-wrapper">
           <h3>Coach Ismael</h3>
-          <p>"Dedicated in eternal gratitude to our coach, mentor, and father figure. Though lost to cancer, his voice, discipline, and dedication to the sport stay with us on every interval and starting line. Every mile is run in his honor."</p>
+          <!-- Subheading in slightly lighter color -->
+          <div class="desc-subheading">Mentor & Father Figure</div>
+          <!-- Static text description -->
+          <p class="italic-text">"Dedicated in eternal gratitude to our coach, mentor, and father figure. Though lost to cancer, his voice, discipline, and dedication to the sport stay with us on every interval and starting line. Every mile is run in his honor."</p>
         </div>
       </div>
     </section>
@@ -217,14 +236,17 @@
       </div>
     </section>
 
-    <!-- 4. Meet the Team (Ghosts into view slightly after memorial) -->
+    <!-- 4. Meet the Team -->
     <section id="team">
       <h2 class="section-title">Meet the Team</h2>
-      <div class="card profile-flex fade-in delay-team">
+      <div class="card profile-flex">
+        <!-- Image phases in -->
         <img src="rigo_profile.jpeg" alt="Rigoberto" class="profile-img" />
-        <div class="profile-info">
+        <div class="text-desc-wrapper">
           <h3>Rigoberto Castellanos</h3>
-          <div class="role">Co-Founder</div>
+          <!-- Subheading in slightly lighter color -->
+          <div class="desc-subheading">Co-Founder</div>
+          <!-- Static text description -->
           <p>Bringing eight years of competitive distance running experience, from leading as high school track and cross country captain to competing collegiately. Founded to honor Coach Ismael's legacy and build a relentless racing culture.</p>
         </div>
       </div>
