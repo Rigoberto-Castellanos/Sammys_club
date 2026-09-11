@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sammy's Club | Distance Running</title>
+  
+  <!-- Imported Google Font for the Title (Montserrat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&display=swap" rel="stylesheet">
+  
   <style>
     /* White, Blue, and Gold Color Palette */
     :root {
@@ -41,17 +45,38 @@
     .hero {
       background-color: var(--primary-blue);
       text-align: left; 
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
     }
+    
+    /* DETAILED 3D TITLE STYLING */
     .hero h1 { 
-      font-size: 2.75rem; 
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-style: italic; /* Conveys speed and athletic motion */
+      font-size: 3.8rem; /* Scaled up slightly for impact */
       text-transform: uppercase; 
       letter-spacing: -0.02em; 
-      margin-bottom: 0.15rem; 
+      margin-bottom: 0.25rem; 
+      line-height: 1.1;
     }
-    .hero h1 .gold { color: var(--accent-gold); }
-    .hero h1 .white { color: var(--bg-white); }
+    
+    .hero h1 .gold { 
+      /* Metallic gold gradient */
+      background: linear-gradient(to bottom right, #f9e79f, #f5b041, #d68910);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      /* 3D block shadow + soft glow for transparent gradient text */
+      filter: drop-shadow(3px 3px 0px #06112a) drop-shadow(4px 4px 10px rgba(0,0,0,0.4));
+    }
+    
+    .hero h1 .white { 
+      color: #ffffff; 
+      display: inline-block;
+      /* Matching 3D block shadow for solid text */
+      text-shadow: 3px 3px 0px #06112a, 4px 4px 10px rgba(0,0,0,0.4);
+    }
     
     .hero p { 
       font-size: 1rem; 
@@ -65,7 +90,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1.25rem;
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
     }
     .hero-nav a {
       color: var(--accent-gold);
@@ -83,11 +108,13 @@
     h2.section-title { 
       text-align: left; 
       color: var(--primary-blue); 
-      font-size: 1.35rem; 
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.45rem; 
       margin-bottom: 1rem; 
       text-transform: uppercase; 
       letter-spacing: -0.02em;
-      border-bottom: 2px solid var(--accent-gold);
+      border-bottom: 3px solid var(--accent-gold);
       display: inline-block;
       padding-bottom: 0.15rem;
     }
@@ -109,7 +136,9 @@
     }
     .memorial h2 { 
       color: var(--primary-blue); 
-      font-size: 1.35rem; 
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.45rem; 
       text-transform: uppercase; 
       margin-bottom: 0.5rem; 
     }
@@ -167,7 +196,7 @@
       border-left: 4px solid var(--primary-blue); 
       text-align: left;
     }
-    .card h3 { color: var(--primary-blue); font-size: 1.05rem; margin-bottom: 0.15rem; }
+    .card h3 { color: var(--primary-blue); font-size: 1.05rem; margin-bottom: 0.15rem; font-weight: 700; }
     .card span { 
       display: inline-block; 
       background: var(--accent-gold); 
@@ -192,7 +221,7 @@
       gap: 1.25rem;
       align-items: flex-start;
       margin-bottom: 1.5rem;
-      max-width: 950px; /* Widened to stretch the text box */
+      max-width: 950px;
     }
     @media (max-width: 768px) {
       .roster-card { flex-direction: column; }
@@ -218,7 +247,7 @@
       transform-origin: center center;
     }
 
-    .roster-info h3 { color: var(--primary-blue); font-size: 1.25rem; margin-bottom: 0.1rem; }
+    .roster-info h3 { color: var(--primary-blue); font-size: 1.25rem; margin-bottom: 0.1rem; font-weight: 700; }
     .roster-info .role { 
       color: var(--accent-gold); 
       font-weight: 700; 
@@ -238,7 +267,7 @@
       background: var(--primary-blue); 
       color: white; 
     }
-    .contact h2 { color: var(--accent-gold); margin-bottom: 0.25rem; font-size: 1.35rem; text-transform: uppercase; }
+    .contact h2 { color: var(--accent-gold); margin-bottom: 0.25rem; font-size: 1.35rem; text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-weight: 900;}
     .contact form { max-width: 400px; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
     .contact input, .contact textarea { 
       width: 100%; padding: 0.5rem; border-radius: 0.25rem; border: none; font-family: inherit; font-size: 0.85rem;
