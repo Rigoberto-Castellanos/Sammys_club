@@ -43,30 +43,15 @@
 
     /* 1. Hero Banner */
     .hero {
-      background-color: var(--primary-blue); /* Switched back to deep navy base */
-      background-image: url('emblem.jpeg'); 
+      background-color: var(--primary-blue); /* Solid deep navy base */
+      background-image: url('emblem.jpeg'); /* The new navy-background emblem */
       background-position: center;
       background-size: contain; 
       background-repeat: no-repeat;
       text-align: left; 
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;
-      position: relative; 
       border-bottom: 4px solid var(--accent-gold); /* Gold separation line */
-    }
-    
-    /* Navy overlay to hide the JPEG's white background and make it look like a watermark */
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15, 40, 98, 0.88); /* 88% opaque navy */
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2; /* Puts the text cleanly above the logo background and overlay */
     }
 
     /* DETAILED 3D TITLE STYLING */
@@ -95,7 +80,7 @@
       font-size: 1rem; 
       max-width: 600px; 
       margin-bottom: 1rem; 
-      color: #e2e8f0; /* Back to light text for navy background */
+      color: #e2e8f0; /* Light text for readability on navy */
       font-weight: 700;
     }
 
@@ -107,7 +92,7 @@
       margin-top: 0.75rem;
     }
     .hero-nav a {
-      color: var(--accent-gold); /* Back to gold links */
+      color: var(--accent-gold); /* Gold navigation links */
       text-decoration: none;
       font-weight: 800;
       font-size: 0.85rem;
