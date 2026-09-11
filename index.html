@@ -11,7 +11,7 @@
   <style>
     /* White, Blue, and Gold Color Palette */
     :root {
-      --primary-blue: #0f2862; 
+      --primary-blue: #09172e; /* Deepened slightly to match the emblem's rich tone */
       --accent-gold: #f5b041;  
       --bg-white: #ffffff;
       --bg-light: #f8fafc;
@@ -43,15 +43,30 @@
 
     /* 1. Hero Banner */
     .hero {
-      background-color: var(--primary-blue); /* Solid deep navy base */
-      background-image: url('emblem.jpeg'); /* The new navy-background emblem */
-      background-position: center;
-      background-size: contain; 
-      background-repeat: no-repeat;
+      background-color: var(--primary-blue); 
       text-align: left; 
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;
-      border-bottom: 4px solid var(--accent-gold); /* Gold separation line */
+      position: relative; 
+      border-bottom: 4px solid var(--accent-gold); 
+    }
+    
+    /* The mix-blend-mode trick forces the dark edges of the JPEG to become completely transparent! */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('emblem.jpeg'); 
+      background-position: center;
+      background-size: contain; 
+      background-repeat: no-repeat;
+      mix-blend-mode: lighten; 
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2; /* Puts the text cleanly above the logo */
     }
 
     /* DETAILED 3D TITLE STYLING */
@@ -72,15 +87,15 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
-      /* 3D block shadow */
-      filter: drop-shadow(3px 3px 0px #06112a) drop-shadow(4px 4px 10px rgba(0,0,0,0.4));
+      /* 3D block shadow adjusted for the darker background */
+      filter: drop-shadow(3px 3px 0px #040a14) drop-shadow(4px 4px 10px rgba(0,0,0,0.5));
     }
     
     .hero p { 
       font-size: 1rem; 
       max-width: 600px; 
       margin-bottom: 1rem; 
-      color: #e2e8f0; /* Light text for readability on navy */
+      color: #e2e8f0; 
       font-weight: 700;
     }
 
@@ -92,7 +107,7 @@
       margin-top: 0.75rem;
     }
     .hero-nav a {
-      color: var(--accent-gold); /* Gold navigation links */
+      color: var(--accent-gold); 
       text-decoration: none;
       font-weight: 800;
       font-size: 0.85rem;
