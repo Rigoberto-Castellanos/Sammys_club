@@ -43,8 +43,8 @@
 
     /* 1. Hero Banner */
     .hero {
-      background-color: var(--bg-white); 
-      background-image: url('emblem.jpeg'); /* Updated to .jpeg */
+      background-color: var(--primary-blue); /* Switched back to deep navy base */
+      background-image: url('emblem.jpeg'); 
       background-position: center;
       background-size: contain; 
       background-repeat: no-repeat;
@@ -52,21 +52,21 @@
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;
       position: relative; 
-      border-bottom: 4px solid var(--accent-gold); /* Updated to match the gold separation lines */
+      border-bottom: 4px solid var(--accent-gold); /* Gold separation line */
     }
     
-    /* Subtle white overlay to ensure text is perfectly readable over the centered emblem */
+    /* Navy overlay to hide the JPEG's white background and make it look like a watermark */
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255, 255, 255, 0.65); 
+      background: rgba(15, 40, 98, 0.88); /* 88% opaque navy */
       z-index: 1;
     }
 
     .hero-content {
       position: relative;
-      z-index: 2; /* Puts the text cleanly above the logo background */
+      z-index: 2; /* Puts the text cleanly above the logo background and overlay */
     }
 
     /* DETAILED 3D TITLE STYLING */
@@ -95,7 +95,7 @@
       font-size: 1rem; 
       max-width: 600px; 
       margin-bottom: 1rem; 
-      color: var(--primary-blue); 
+      color: #e2e8f0; /* Back to light text for navy background */
       font-weight: 700;
     }
 
@@ -107,7 +107,7 @@
       margin-top: 0.75rem;
     }
     .hero-nav a {
-      color: var(--primary-blue); 
+      color: var(--accent-gold); /* Back to gold links */
       text-decoration: none;
       font-weight: 800;
       font-size: 0.85rem;
@@ -116,7 +116,7 @@
       transition: color 0.2s ease;
     }
     .hero-nav a:hover {
-      color: var(--accent-gold); /* Updated hover state to match gold */
+      color: var(--bg-white); 
     }
 
     h2.section-title { 
@@ -302,7 +302,6 @@
   <!-- 1. HERO BANNER -->
   <section class="hero">
     <div class="hero-content">
-      <!-- Changed back to gold styling for both words -->
       <h1><span class="gold">Sammy's</span> <span class="gold">Club</span></h1>
       <p>The Greatest Running Team in the San Fernando Valley.</p>
       
