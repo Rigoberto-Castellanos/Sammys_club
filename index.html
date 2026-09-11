@@ -3,286 +3,390 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sammy's Club | San Fernando Valley Running</title>
+  <title>Sammy's Club | Distance Running</title>
   <style>
-    /* Athletic Navy, Gold, and White Palette */
+    /* White, Blue, and Gold Color Palette */
     :root {
-      --navy: #0f2862;
-      --gold: #f5b041;
-      --white: #ffffff;
-      --light-bg: #f8fafc;
-      --slate: #334155;
-      --muted: #64748b;
-      --border: #e2e8f0;
+      --primary-blue: #0f2862; /* Deep Navy */
+      --accent-gold: #f5b041;  /* Athletic Gold */
+      --bg-white: #ffffff;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-light: #64748b;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-    html { scroll-behavior: smooth; }
     
-    /* Removed all central alignment. Everything anchors left. */
-    body { background-color: var(--white); color: var(--slate); line-height: 1.5; font-size: 0.95rem; text-align: left; }
-
-    /* Left-Aligned Hero Header with Pop-Out Title */
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    }
+    
+    body { 
+      background-color: var(--bg-white); 
+      color: var(--text-main); 
+      line-height: 1.6; 
+    }
+    
+    /* 1. Hero Banner */
     .hero {
-      background: var(--navy);
-      color: var(--white);
-      padding: 2rem 1.5rem 1.5rem;
-      text-align: left; /* Forces text to the left */
+      background-color: var(--primary-blue);
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
     }
-    .hero h1 {
-      font-size: 3rem;
-      font-style: italic;
-      color: var(--navy); /* Deep navy inner */
-      -webkit-text-stroke: 1.5px var(--gold); /* Crisp gold outline */
-      text-shadow: 2px 2px 0 var(--white), 5px 5px 8px rgba(0,0,0,0.5); /* 3D pop-out shadow */
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.5rem;
+    .hero h1 { 
+      font-size: 3rem; 
+      color: var(--accent-gold); 
+      text-transform: uppercase; 
+      letter-spacing: -0.03em; 
+      margin-bottom: 0.75rem; 
     }
-    .hero p {
-      color: #cbd5e1;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .hero p { 
+      font-size: 1.25rem; 
+      max-width: 650px; 
+      margin: 0 auto 2rem; 
+      color: #e2e8f0; 
+    }
+    .hero button { 
+      background: var(--accent-gold); 
+      color: var(--primary-blue); 
+      border: none; 
+      padding: 1rem 2rem; 
+      border-radius: 0.5rem; 
+      font-weight: 700; 
+      font-size: 1.1rem; 
+      cursor: pointer; 
+      transition: opacity 0.2s ease;
+    }
+    .hero button:hover { 
+      opacity: 0.9; 
     }
 
-    /* Left-Aligned Sticky Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--navy);
-      z-index: 1000;
-      border-top: 1px solid #1e3a7a;
-      border-bottom: 3px solid var(--gold);
-      padding: 0.5rem 1.5rem;
-    }
-    .nav-links { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 0.5rem; 
-      list-style: none; 
-      justify-content: flex-start; /* Anchors links to the far left */
-      margin-left: -0.5rem; 
-    }
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 0.3rem 0.5rem;
-      border-radius: 3px;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-
-    /* Main Container - Removed max-width centering */
+    /* Layout Wrapper */
     .container { 
-      padding: 2rem 1.5rem; 
-      width: 100%; 
+      max-width: 1000px; 
+      margin: 0 auto; 
+      padding: 4rem 1rem; 
     }
-    section { margin-bottom: 2rem; scroll-margin-top: 4rem; }
-    
-    h2.section-title {
-      font-size: 1.25rem;
-      font-style: italic;
-      color: var(--navy);
-      text-transform: uppercase;
-      border-left: 4px solid var(--gold);
-      padding-left: 0.75rem;
-      margin-bottom: 1rem;
+    h2.section-title { 
+      text-align: center; 
+      color: var(--primary-blue); 
+      font-size: 2.25rem; 
+      margin-bottom: 2rem; 
+      text-transform: uppercase; 
+      letter-spacing: -0.02em;
     }
 
-    /* Ghost-in Animation ONLY for the photos */
-    @keyframes ghostFadeIn {
-      0% { opacity: 0; transform: translateY(15px); filter: blur(3px); }
-      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    /* 2. In Memoriam / Crossfade Banner */
+    .memorial { 
+      background-color: var(--bg-light); 
+      padding: 4.5rem 1rem; 
+      text-align: center; 
+      border-bottom: 4px solid var(--accent-gold); 
+    }
+    .memorial-content { 
+      max-width: 800px; 
+      margin: 0 auto; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 2rem; 
+    }
+    .memorial h2 { 
+      color: var(--primary-blue); 
+      font-size: 2.2rem; 
+      text-transform: uppercase; 
+      margin-bottom: 0.5rem; 
+      letter-spacing: -0.02em;
+    }
+    .memorial p { 
+      color: var(--text-main); 
+      font-size: 1.15rem; 
+      font-style: italic; 
+      line-height: 1.8; 
+      padding: 0 1rem; 
     }
 
-    .memorial-box {
-      background: var(--light-bg);
-      border: 1px solid var(--border);
-      border-top: 4px solid var(--navy);
-      border-radius: 6px;
-      padding: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start; /* Aligns content to top-left */
-      gap: 1.5rem;
-      max-width: 1000px; /* Prevents text from stretching infinitely on huge screens */
+    /* Crossfade Image Frame (Crops bottom text from memorial card) */
+    .crossfade-frame {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      height: 460px; 
+      border-radius: 0.75rem;
+      border: 4px solid var(--primary-blue);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+      overflow: hidden; 
+      background: #000;
     }
-    .memorial-img {
-      width: 140px;
-      height: 140px;
+
+    .crossfade-frame img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
-      border-radius: 6px;
-      border: 3px solid var(--gold);
-      opacity: 0; /* Starts hidden for animation */
-      animation: ghostFadeIn 1.5s ease-out forwards;
+      animation: crossfadeCycle 10s infinite ease-in-out;
     }
-    
-    /* Text Descriptions & Subheadings */
-    .text-desc-wrapper { flex: 1; min-width: 250px; text-align: left; }
-    .text-desc-wrapper h3 { color: var(--navy); font-size: 1.2rem; font-style: italic; margin-bottom: 0.15rem; }
-    
-    /* Subheading with a lighter slate color */
-    .desc-subheading {
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-    }
-    
-    .text-desc-wrapper p { font-size: 0.95rem; color: var(--slate); line-height: 1.6; }
-    .italic-text { font-style: italic; }
 
-    /* Compact Cards */
-    .card {
-      background: var(--light-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.25rem;
-      max-width: 1000px;
+    /* Image 1: Racing Shot */
+    .crossfade-frame img.img-1 {
+      object-position: center top;
+      animation-delay: 0s;
     }
-    
-    /* Agenda List */
-    .agenda-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .agenda-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; font-weight: 600; color: var(--navy); }
-    .status-tag { background: var(--navy); color: var(--gold); font-size: 0.7rem; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 3px; font-weight: 700; min-width: 85px; text-align: center; }
 
-    /* Roster Profile */
-    .profile-flex { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; }
-    .profile-img { 
-      width: 120px; 
-      height: 120px; 
+    /* Image 2: Formal Portrait (Top-aligned to show only the portrait) */
+    .crossfade-frame img.img-2 {
+      object-position: top center;
+      animation-delay: 5s;
+    }
+
+    @keyframes crossfadeCycle {
+      0%   { opacity: 1; }
+      45%  { opacity: 1; }
+      55%  { opacity: 0; }
+      95%  { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* 3. About / Mission */
+    .about { 
+      text-align: center; 
+      max-width: 750px; 
+      margin: 0 auto 4rem; 
+      font-size: 1.15rem; 
+      color: var(--text-light); 
+      line-height: 1.8;
+    }
+
+    /* 4. Weekly Schedule */
+    .schedule-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 1.5rem; 
+      margin-bottom: 4rem; 
+    }
+    .card { 
+      background: var(--bg-light); 
+      padding: 2rem; 
+      border-radius: 0.5rem; 
+      border-top: 4px solid var(--primary-blue); 
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+    }
+    .card h3 { 
+      color: var(--primary-blue); 
+      font-size: 1.25rem; 
+      margin-bottom: 0.5rem; 
+    }
+    .card span { 
+      display: inline-block; 
+      background: var(--accent-gold); 
+      color: var(--primary-blue); 
+      padding: 0.25rem 0.75rem; 
+      border-radius: 999px; 
+      font-size: 0.85rem; 
+      font-weight: 700; 
+      margin-bottom: 1rem; 
+    }
+
+    /* 5. Team Leaders & Bios */
+    .roster-grid { 
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4rem; 
+    }
+    .roster-card {
+      background: var(--bg-light);
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 2.5rem 2rem;
+      max-width: 650px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
+    .roster-card img { 
+      width: 170px; 
+      height: 170px; 
       border-radius: 50%; 
       object-fit: cover; 
-      /* Reset completely to center to prevent black bars from the phone screenshot */
-      object-position: center; 
-      border: 3px solid var(--navy);
-      opacity: 0; 
-      animation: ghostFadeIn 1.5s ease-out forwards;
-      animation-delay: 0.3s; 
+      object-position: top; 
+      border: 4px solid var(--accent-gold); 
+      margin-bottom: 1.25rem; 
+    }
+    .roster-card h3 { 
+      color: var(--primary-blue); 
+      font-size: 1.6rem; 
+      margin-bottom: 0.25rem; 
+    }
+    .roster-card .role { 
+      color: var(--accent-gold); 
+      font-weight: 700; 
+      font-size: 0.95rem; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem; 
+    }
+    .roster-card p { 
+      color: var(--text-main); 
+      font-size: 1rem; 
+      line-height: 1.7; 
+      text-align: left;
     }
 
-    /* Schedule Grid */
-    .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; max-width: 1000px; }
-    .schedule-grid .card { padding: 1rem; }
-    .schedule-grid .tag { display: inline-block; background: var(--navy); color: var(--gold); font-size: 0.75rem; font-weight: bold; padding: 0.2rem 0.5rem; border-radius: 3px; margin-bottom: 0.4rem; }
-    .schedule-grid h4 { color: var(--navy); font-size: 1.05rem; font-style: italic; }
-
-    footer { text-align: left; padding: 2rem 1.5rem; color: #94a3b8; font-size: 0.8rem; }
+    /* 6. Contact Form */
+    .contact { 
+      background: var(--primary-blue); 
+      color: white; 
+      padding: 4.5rem 1rem; 
+      text-align: center; 
+    }
+    .contact h2 { 
+      color: var(--accent-gold); 
+      margin-bottom: 1rem; 
+      font-size: 2.25rem; 
+      text-transform: uppercase; 
+    }
+    .contact form { 
+      max-width: 500px; 
+      margin: 0 auto; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1rem; 
+      text-align: left; 
+    }
+    .contact input, .contact textarea { 
+      width: 100%; 
+      padding: 0.75rem; 
+      border-radius: 0.35rem; 
+      border: 1px solid #cbd5e1; 
+      font-family: inherit; 
+      font-size: 1rem;
+    }
+    .contact textarea { 
+      resize: vertical; 
+      min-height: 110px; 
+    }
+    .contact button { 
+      background: var(--accent-gold); 
+      color: var(--primary-blue); 
+      border: none; 
+      padding: 1rem; 
+      border-radius: 0.35rem; 
+      font-weight: 700; 
+      font-size: 1rem; 
+      cursor: pointer; 
+      margin-top: 0.5rem; 
+      transition: opacity 0.2s;
+    }
+    .contact button:hover {
+      opacity: 0.9;
+    }
+    
+    footer { 
+      text-align: center; 
+      padding: 2.5rem 1rem; 
+      color: var(--text-light); 
+      font-size: 0.9rem; 
+    }
   </style>
 </head>
 <body>
 
-  <!-- Hero Header (Anchored Left, 3D Title) -->
-  <header class="hero">
+  <!-- 1. HERO BANNER -->
+  <section class="hero">
     <h1>Sammy's Club</h1>
-    <p>The Greatest San Fernando Valley Running Team of All Time</p>
-  </header>
+    <p>Chasing relentless progress across the San Fernando Valley. Track, tempo, and long runs for competitive distance runners.</p>
+    <button onclick="document.getElementById('join').scrollIntoView({behavior: 'smooth'})">Join the Next Run</button>
+  </section>
 
-  <!-- Sticky Nav (Anchored Left) -->
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#memorial">In Memorial</a></li>
-      <li><a href="#agenda">Agenda</a></li>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#schedule">Schedule</a></li>
-      <li><a href="#contact">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <main class="container">
-
-    <!-- 1. Memorial -->
-    <section id="memorial">
-      <h2 class="section-title">In Memorial</h2>
-      <div class="memorial-box">
-        <!-- Image phases in -->
-        <img src="coach_ismael.jpeg" alt="Coach Ismael" class="memorial-img" />
-        <div class="text-desc-wrapper">
-          <h3>Coach Ismael</h3>
-          <div class="desc-subheading">Mentor, Coach, & Father Figure</div>
-          <p class="italic-text">"Dedicated in eternal gratitude to our coach, mentor, and father figure. Coach Ismael's legacy began as a runner for James Monroe High School, where he later returned to serve as the assistant coach, guiding notable athletes like Rigo, Malcolm, and Jorge. He was known for his extraordinary, selfless acts of kindness—frequently buying food, clothes, and running shoes for his students out of his own pocket to ensure they could succeed. He forged a profound, close-knit connection with the entire community. Though lost to cancer, his voice, discipline, and boundless generosity stay with us on every interval and starting line. Sammy's Club is founded and run entirely in his honor."</p>
-        </div>
+  <!-- 2. IN MEMORIAM / TRIBUTE (PHOTO CYCLE) -->
+  <section class="memorial">
+    <div class="memorial-content">
+      
+      <!-- Crossfade cycling container -->
+      <div class="crossfade-frame">
+        <img class="img-1" src="coach_ismael.jpeg" alt="Coach Ismael Samano Racing">
+        <img class="img-2" src="coach_portrait.jpeg" alt="Coach Ismael Samano Portrait">
       </div>
-    </section>
 
-    <!-- 2. Agenda -->
-    <section id="agenda">
-      <h2 class="section-title">Current Agenda</h2>
-      <div class="card">
-        <ul class="agenda-list">
-          <li class="agenda-item"><span class="status-tag">Priority</span> Set Club Emblem</li>
-          <li class="agenda-item"><span class="status-tag">In Progress</span> Set Up Official Team Gear</li>
-          <li class="agenda-item"><span class="status-tag">Planning</span> Design Racing Uniforms</li>
-        </ul>
+      <div>
+        <h2>In Memoriam: Coach Ismael "Sammy" Samano</h2>
+        <p>"Dedicated to the life, fire, and legacy of Coach Sammy. He was more than a coach—he was a father figure and mentor who rebuilt runners from the ground up and taught us the true meaning of heart. Though he fought a courageous battle with cancer, the grit, work ethic, and belief he instilled in us will never fade. Every workout, every lap, and every race is run in his honor."</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 3. Mission -->
-    <section id="mission">
+  <div class="container">
+    <!-- 3. ABOUT / MISSION -->
+    <section class="about">
       <h2 class="section-title">Our Mission</h2>
+      <p>Built out of pure dedication to the sport. We are a collective of distance runners pushing each other through hard miles, disciplined pacing, and unmatched camaraderie. No shortcuts, no excuses—just honest work on the track and roads.</p>
+    </section>
+
+    <!-- 4. WEEKLY SCHEDULE -->
+    <h2 class="section-title">Weekly Sessions</h2>
+    <section class="schedule-grid">
       <div class="card">
-        <p>Sammy's Club is committed to serious aerobic development, teamwork, and honoring competitive distance running traditions across the San Fernando Valley.</p>
+        <span>Tuesdays @ 6:00 PM</span>
+        <h3>Track Intervals</h3>
+        <p>Speed development, 400m–1600m repeats, and lactate threshold management at the local track.</p>
+      </div>
+      <div class="card">
+        <span>Thursdays @ 6:30 PM</span>
+        <h3>Tempo Effort</h3>
+        <p>5 to 7 miles of sustained tempo rhythm with progressive pace cutdowns through the neighborhood.</p>
+      </div>
+      <div class="card">
+        <span>Saturdays @ 7:00 AM</span>
+        <h3>The Long Run</h3>
+        <p>10 to 16 miles of rolling terrain building the aerobic engine. Multiple pace groups available.</p>
       </div>
     </section>
 
-    <!-- 4. Meet the Team -->
-    <section id="team">
-      <h2 class="section-title">Meet the Team</h2>
-      <div class="card profile-flex">
-        <!-- Image phases in -->
-        <img src="rigo_profile.jpeg" alt="Rigoberto" class="profile-img" />
-        <div class="text-desc-wrapper">
-          <h3>Rigoberto Castellanos</h3>
-          <div class="desc-subheading">Co-Founder</div>
-          <p>Bringing eight years of competitive distance running experience, from leading as high school track and cross country captain to competing collegiately. Founded to honor Coach Ismael's legacy and build a relentless racing culture.</p>
-        </div>
+    <!-- 5. TEAM LEADERS / YOUR BIO -->
+    <h2 class="section-title">Team Leadership</h2>
+    <section class="roster-grid">
+      <div class="roster-card">
+        <img src="rigo_profile.jpeg" alt="Rigoberto Castellanos">
+        <h3>Rigoberto Castellanos</h3>
+        <div class="role">Founder & Team Captain</div>
+        <p>
+          Rigoberto is one of Coach Samano’s proudest disciples. After walking away from running during the 2020 pandemic, Coach Sammy—newly arrived to the program—refused to let his talent slip away. Month after month, Sammy brought him back into form with unrelenting 5:00 AM workouts alongside his loyal dog Mercy (who sadly passed in 2025 after her own battle with cancer).
+          <br><br>
+          That grind paid off: after a year of rebuilding, Rigoberto captured his first city title while battling through an active lung infection. He went on to rack up over 200 race victories for Monroe and built a presence as the self-proclaimed "Most Handsome Narcissist" hosting the popular <em>AM Runs</em> YouTube channel. 
+          <br><br>
+          Following an unforgiving college running stint, recent events have re-ignited his purpose. Now back on home soil, he founded Sammy's Club to give back to the local running community, mentor the next generation, and carry Coach Samano’s fiery legacy forward into every stride.
+        </p>
       </div>
     </section>
+  </div>
 
-    <!-- 5. Schedule -->
-    <section id="schedule">
-      <h2 class="section-title">Weekly Schedule</h2>
-      <div class="schedule-grid">
-        <div class="card">
-          <span class="tag">Tue @ 2:00 PM</span>
-          <h4>Light Jog Run</h4>
-          <p style="font-size:0.85rem; margin-top:0.4rem;">Easy aerobic maintenance and recovery pacing.</p>
-        </div>
-        <div class="card">
-          <span class="tag">Thu @ 2:00 PM</span>
-          <h4>Workout of Choice</h4>
-          <p style="font-size:0.85rem; margin-top:0.4rem;">Workout of our choice on hills for targeted elevation work.</p>
-        </div>
-        <div class="card">
-          <span class="tag">Sat @ 6:40 AM</span>
-          <h4>Long Run</h4>
-          <p style="font-size:0.85rem; margin-top:0.4rem;">Long run in a mountain running trail.</p>
-        </div>
+  <!-- 6. CONTACT FORM -->
+  <section class="contact" id="join">
+    <h2>Ready to Lace Up?</h2>
+    <p style="margin-bottom: 2rem; color: #e2e8f0;">Reach out below to get this week's workout pins and connect with the pack.</p>
+    
+    <form action="#" method="POST">
+      <div>
+        <label for="name" style="color: white; font-size: 0.9rem; display: block; margin-bottom: 0.35rem;">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name">
       </div>
-    </section>
-
-    <!-- 6. Contact Us -->
-    <section id="contact">
-      <h2 class="section-title">Contact Us</h2>
-      <div class="card" style="text-align: left;">
-        <p style="font-size:0.9rem; margin-bottom: 1rem;">Have questions about joining, workouts, or team gear?</p>
-        <button style="background:var(--navy); color:var(--gold); border:none; padding:0.6rem 1.25rem; border-radius:4px; font-weight:bold; cursor:pointer;" onclick="alert('Contact form coming soon!')">Contact Support Staff</button>
+      <div>
+        <label for="email" style="color: white; font-size: 0.9rem; display: block; margin-bottom: 0.35rem;">Email</label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com">
       </div>
-    </section>
-
-  </main>
+      <div>
+        <label for="goals" style="color: white; font-size: 0.9rem; display: block; margin-bottom: 0.35rem;">Current Goals / Events</label>
+        <textarea id="goals" name="goals" placeholder="What distance or times are you targeting?"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
 
   <footer>
-    <p>&copy; 2026 Sammy's Club. All rights reserved.</p>
+    <p>&copy; 2026 Sammy's Club. All miles run in memory of Coach Ismael Samano.</p>
   </footer>
 
 </body>
