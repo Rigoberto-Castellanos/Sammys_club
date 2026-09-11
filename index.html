@@ -43,15 +43,16 @@
 
     /* 1. Hero Banner */
     .hero {
-      background-color: var(--bg-white); /* Switched to white base */
-      background-image: url('emblem.jpg'); /* Ensure your file is named emblem.jpg in GitHub */
+      background-color: var(--bg-white); 
+      background-image: url('emblem.jpeg'); /* Updated to .jpeg */
       background-position: center;
-      background-size: contain; /* Keeps the logo centered proportionally without stretching */
+      background-size: contain; 
       background-repeat: no-repeat;
       text-align: left; 
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;
-      position: relative; /* Needed for the overlay */
+      position: relative; 
+      border-bottom: 4px solid var(--accent-gold); /* Updated to match the gold separation lines */
     }
     
     /* Subtle white overlay to ensure text is perfectly readable over the centered emblem */
@@ -90,18 +91,11 @@
       filter: drop-shadow(3px 3px 0px #06112a) drop-shadow(4px 4px 10px rgba(0,0,0,0.4));
     }
     
-    .hero h1 .neon { 
-      color: #00c3ff; /* Bright Neon Blue to match the new emblem */
-      display: inline-block;
-      /* Deep navy shadow so it pops off the bright background */
-      text-shadow: 3px 3px 0px #0f2862, 4px 4px 10px rgba(0,0,0,0.3);
-    }
-    
     .hero p { 
       font-size: 1rem; 
       max-width: 600px; 
       margin-bottom: 1rem; 
-      color: var(--primary-blue); /* Switched to Navy for readability on white */
+      color: var(--primary-blue); 
       font-weight: 700;
     }
 
@@ -113,7 +107,7 @@
       margin-top: 0.75rem;
     }
     .hero-nav a {
-      color: var(--primary-blue); /* Switched to Navy */
+      color: var(--primary-blue); 
       text-decoration: none;
       font-weight: 800;
       font-size: 0.85rem;
@@ -122,7 +116,7 @@
       transition: color 0.2s ease;
     }
     .hero-nav a:hover {
-      color: #00c3ff; /* Hovers in Neon Blue */
+      color: var(--accent-gold); /* Updated hover state to match gold */
     }
 
     h2.section-title { 
@@ -308,8 +302,8 @@
   <!-- 1. HERO BANNER -->
   <section class="hero">
     <div class="hero-content">
-      <!-- Changed 'Sammy's' to use the neon class so it matches 'Club' perfectly -->
-      <h1><span class="neon">Sammy's</span> <span class="neon">Club</span></h1>
+      <!-- Changed back to gold styling for both words -->
+      <h1><span class="gold">Sammy's</span> <span class="gold">Club</span></h1>
       <p>The Greatest Running Team in the San Fernando Valley.</p>
       
       <!-- Clickable Navigation Links -->
