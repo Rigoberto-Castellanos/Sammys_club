@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sammy's Club | Distance Running</title>
   <style>
-    /* White, Blue, and Gold Color Palette */
     :root {
-      --primary-blue: #0f2862; /* Deep Navy */
-      --accent-gold: #f5b041;  /* Athletic Gold */
+      --primary-blue: #0f2862;
+      --accent-gold: #f5b041;
       --bg-white: #ffffff;
       --bg-light: #f8fafc;
       --text-main: #1e293b;
@@ -108,7 +107,7 @@
       padding: 0 1rem; 
     }
 
-    /* Crossfade Image Frame (Crops bottom text from memorial card) */
+    /* Crossfade Image Frame */
     .crossfade-frame {
       position: relative;
       width: 100%;
@@ -131,13 +130,11 @@
       animation: crossfadeCycle 10s infinite ease-in-out;
     }
 
-    /* Image 1: Racing Shot */
     .crossfade-frame img.img-1 {
       object-position: center top;
       animation-delay: 0s;
     }
 
-    /* Image 2: Formal Portrait (Top-aligned to show only the portrait) */
     .crossfade-frame img.img-2 {
       object-position: top center;
       animation-delay: 5s;
@@ -191,48 +188,76 @@
       margin-bottom: 1rem; 
     }
 
-    /* 5. Team Leaders & Bios */
-    .roster-grid { 
+    /* 5. Team Leadership / Profile Card */
+    .roster-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 4rem; 
+      margin-bottom: 4rem;
     }
+
     .roster-card {
       background: var(--bg-light);
       border: 1px solid #e2e8f0;
-      border-radius: 0.75rem;
-      padding: 2.5rem 2rem;
-      max-width: 650px;
+      border-radius: 1rem;
+      padding: 3rem 2rem;
+      max-width: 720px;
+      width: 100%;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .roster-card img { 
-      width: 170px; 
-      height: 170px; 
-      border-radius: 50%; 
-      object-fit: cover; 
-      object-position: top; 
-      border: 4px solid var(--accent-gold); 
-      margin-bottom: 1.25rem; 
+
+    /* Zoomed and centered image crop container */
+    .avatar-wrapper {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 4px solid var(--accent-gold);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      position: relative;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.85) translateY(-6%);
+      transform-origin: center center;
+    }
+
     .roster-card h3 { 
       color: var(--primary-blue); 
-      font-size: 1.6rem; 
+      font-size: 1.75rem; 
       margin-bottom: 0.25rem; 
     }
+
     .roster-card .role { 
       color: var(--accent-gold); 
       font-weight: 700; 
       font-size: 0.95rem; 
       text-transform: uppercase; 
-      letter-spacing: 0.05em;
-      margin-bottom: 1.25rem; 
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem; 
     }
-    .roster-card p { 
+
+    .roster-card .bio { 
       color: var(--text-main); 
-      font-size: 1rem; 
-      line-height: 1.7; 
+      font-size: 1.05rem; 
+      line-height: 1.8; 
       text-align: left;
+      max-width: 620px;
+    }
+
+    .roster-card .bio p + p {
+      margin-top: 1.2rem;
     }
 
     /* 6. Contact Form */
@@ -304,8 +329,6 @@
   <!-- 2. IN MEMORIAM / TRIBUTE (PHOTO CYCLE) -->
   <section class="memorial">
     <div class="memorial-content">
-      
-      <!-- Crossfade cycling container -->
       <div class="crossfade-frame">
         <img class="img-1" src="coach_ismael.jpeg" alt="Coach Ismael Samano Racing">
         <img class="img-2" src="coach_portrait.jpeg" alt="Coach Ismael Samano Portrait">
@@ -345,22 +368,28 @@
       </div>
     </section>
 
-    <!-- 5. TEAM LEADERS / YOUR BIO -->
+    <!-- 5. TEAM LEADERSHIP / BIO -->
     <h2 class="section-title">Team Leadership</h2>
-    <section class="roster-grid">
+    <div class="roster-container">
       <div class="roster-card">
-        <img src="rigo_profile.jpeg" alt="Rigoberto Castellanos">
+        <div class="avatar-wrapper">
+          <img src="rigo_profile.jpeg" alt="Rigoberto Castellanos">
+        </div>
         <h3>Rigoberto Castellanos</h3>
         <div class="role">Founder & Team Captain</div>
-        <p>
-          Rigoberto is one of Coach Samano’s proudest disciples. After walking away from running during the 2020 pandemic, Coach Sammy—newly arrived to the program—refused to let his talent slip away. Month after month, Sammy brought him back into form with unrelenting 5:00 AM workouts alongside his loyal dog Mercy (who sadly passed in 2025 after her own battle with cancer).
-          <br><br>
-          That grind paid off: after a year of rebuilding, Rigoberto captured his first city title while battling through an active lung infection. He went on to rack up over 200 race victories for Monroe and built a presence as the self-proclaimed "Most Handsome Narcissist" hosting the popular <em>AM Runs</em> YouTube channel. 
-          <br><br>
-          Following an unforgiving college running stint, recent events have re-ignited his purpose. Now back on home soil, he founded Sammy's Club to give back to the local running community, mentor the next generation, and carry Coach Samano’s fiery legacy forward into every stride.
-        </p>
+        <div class="bio">
+          <p>
+            Rigoberto is one of Coach Samano’s proudest disciples. After walking away from running during the 2020 pandemic, Coach Sammy—newly arrived to the program—refused to let his talent slip away. Month after month, Sammy brought him back into form with unrelenting 5:00 AM workouts alongside his loyal dog Mercy (who passed away in 2025 from cancer).
+          </p>
+          <p>
+            That grind paid off: after a year of rebuilding, Rigoberto captured his first city title while battling through an active lung infection. He went on to rack up over 200 race victories for Monroe and built a presence as the self-proclaimed "Most Handsome Narcissist" hosting the popular <em>AM Runs</em> YouTube channel.
+          </p>
+          <p>
+            Following an unforgiving college running stint, recent events have re-ignited his purpose. Now back on home soil, he founded Sammy's Club to give back to the local running community, mentor the next generation, and carry Coach Samano’s fiery legacy forward into every stride.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
   </div>
 
   <!-- 6. CONTACT FORM -->
