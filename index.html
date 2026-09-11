@@ -43,18 +43,37 @@
 
     /* 1. Hero Banner */
     .hero {
-      background-color: var(--primary-blue);
+      background-color: var(--bg-white); /* Switched to white base */
+      background-image: url('emblem.jpg'); /* Ensure your file is named emblem.jpg in GitHub */
+      background-position: center;
+      background-size: contain; /* Keeps the logo centered proportionally without stretching */
+      background-repeat: no-repeat;
       text-align: left; 
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;
+      position: relative; /* Needed for the overlay */
     }
     
+    /* Subtle white overlay to ensure text is perfectly readable over the centered emblem */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.65); 
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2; /* Puts the text cleanly above the logo background */
+    }
+
     /* DETAILED 3D TITLE STYLING */
     .hero h1 { 
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-style: italic; /* Conveys speed and athletic motion */
-      font-size: 3.8rem; /* Scaled up slightly for impact */
+      font-style: italic; 
+      font-size: 3.8rem; 
       text-transform: uppercase; 
       letter-spacing: -0.02em; 
       margin-bottom: 0.25rem; 
@@ -67,22 +86,23 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
-      /* 3D block shadow + soft glow for transparent gradient text */
+      /* 3D block shadow */
       filter: drop-shadow(3px 3px 0px #06112a) drop-shadow(4px 4px 10px rgba(0,0,0,0.4));
     }
     
-    .hero h1 .white { 
-      color: #ffffff; 
+    .hero h1 .neon { 
+      color: #00c3ff; /* Bright Neon Blue to match the new emblem */
       display: inline-block;
-      /* Matching 3D block shadow for solid text */
-      text-shadow: 3px 3px 0px #06112a, 4px 4px 10px rgba(0,0,0,0.4);
+      /* Deep navy shadow so it pops off the bright background */
+      text-shadow: 3px 3px 0px #0f2862, 4px 4px 10px rgba(0,0,0,0.3);
     }
     
     .hero p { 
       font-size: 1rem; 
       max-width: 600px; 
       margin-bottom: 1rem; 
-      color: #e2e8f0; 
+      color: var(--primary-blue); /* Switched to Navy for readability on white */
+      font-weight: 700;
     }
 
     /* Navigation Menu */
@@ -93,16 +113,16 @@
       margin-top: 0.75rem;
     }
     .hero-nav a {
-      color: var(--accent-gold);
+      color: var(--primary-blue); /* Switched to Navy */
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: color 0.2s ease;
     }
     .hero-nav a:hover {
-      color: var(--bg-white);
+      color: #00c3ff; /* Hovers in Neon Blue */
     }
 
     h2.section-title { 
@@ -288,7 +308,7 @@
   <!-- 1. HERO BANNER -->
   <section class="hero">
     <div class="hero-content">
-      <h1><span class="gold">Sammy's</span> <span class="white">Club</span></h1>
+      <h1><span class="gold">Sammy's</span> <span class="neon">Club</span></h1>
       <p>The Greatest Running Team in the San Fernando Valley.</p>
       
       <!-- Clickable Navigation Links -->
